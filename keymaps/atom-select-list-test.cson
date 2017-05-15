@@ -8,4 +8,4 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-workspace':
-  'ctrl-alt-o': 'atom-select-list-test:toggle'
+  'ctrl-shift-1': 'atom-select-list-test:toggle'
