@@ -44,10 +44,9 @@ module.exports = AtomSelectListTest =
       emptyMessage: 'no results'
 
       filterKeyForItem: (item) =>
-        console.log "filterKeyForItem for #{item.fileName}"
         return item.fileName
 
-    @topPanel = atom.workspace.addTopPanel
+    @topPanel = atom.workspace.addModalPanel
       item: @selectListView.element
       visible: false
 
@@ -75,7 +74,6 @@ module.exports = AtomSelectListTest =
       @selectListView.focus()
       cscope '/home/amakarov/work/linux', 'smp_setup_processor_id', 0
         .then (result) =>
-          console.log "promise is resolved"
           result.map (i) =>
             console.log "#{i.fileName}:#{i.lineNumber} #{i.lineText}"
           @selectListView.update
