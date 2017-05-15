@@ -1,14 +1,33 @@
-AtomSelectListTestView = require './atom-select-list-test-view'
+SelectListView = require 'atom-select-list'
+
 {CompositeDisposable} = require 'atom'
 
 module.exports = AtomSelectListTest =
-  atomSelectListTestView: null
+  selectListView: null
   modalPanel: null
   subscriptions: null
 
   activate: (state) ->
-    @atomSelectListTestView = new AtomSelectListTestView(state.atomSelectListTestViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @atomSelectListTestView.getElement(), visible: false)
+
+    @selectListView = new SelectListView
+
+      items: ['one', 'two', 'three']
+
+      elementForItem: (item) =>
+        li = document.createElement('li')
+        li.textContent = item
+        return li
+
+      didConfirmSelection: (item) =>
+        console.log 'confirmed', item
+
+
+      didCancelSelection: () =>
+        console.log 'cancelled'
+
+    @modalPanel = atom.workspace.addTopPanel
+      item: @selectListView.element
+      visible: false
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -19,10 +38,9 @@ module.exports = AtomSelectListTest =
   deactivate: ->
     @modalPanel.destroy()
     @subscriptions.dispose()
-    @atomSelectListTestView.destroy()
+    @selectListView.destroy()
 
   serialize: ->
-    atomSelectListTestViewState: @atomSelectListTestView.serialize()
 
   toggle: ->
     console.log 'AtomSelectListTest was toggled!'
