@@ -18,16 +18,34 @@ module.exports = AtomSelectListTest =
       items: []
 
       elementForItem: (item) =>
-        li = document.createElement('li')
-        li.textContent = item.lineText
+
+        l1 = document.createElement 'div'
+        l1.classList.add 'primary-line'
+        l1.textContent = item.lineText
+
+        l2 = document.createElement 'div'
+        l2.classList.add 'secondary-line'
+        l2.textContent = "#{item.fileName}:#{item.lineNumber}"
+
+        li = document.createElement 'li'
+        li.classList.add 'padded'
+        li.classList.add 'two-lines'
+        li.appendChild l1
+        li.appendChild l2
+
         return li
 
       didConfirmSelection: (item) =>
         console.log 'confirmed', item
 
-
       didCancelSelection: () =>
         console.log 'cancelled'
+
+      emptyMessage: 'no results'
+
+      filterKeyForItem: (item) =>
+        console.log "filterKeyForItem for #{item.fileName}"
+        return item.fileName
 
     @topPanel = atom.workspace.addTopPanel
       item: @selectListView.element
@@ -53,11 +71,12 @@ module.exports = AtomSelectListTest =
     if @topPanel.isVisible()
       @topPanel.hide()
     else
+      @topPanel.show()
+      @selectListView.focus()
       cscope '/home/amakarov/work/linux', 'smp_setup_processor_id', 0
         .then (result) =>
           console.log "promise is resolved"
           result.map (i) =>
             console.log "#{i.fileName}:#{i.lineNumber} #{i.lineText}"
-          @selectListView.items = result
-          @selectListView.update()
-          @topPanel.show()
+          @selectListView.update
+            items: result
