@@ -46,7 +46,7 @@ module.exports = AtomSelectListTest =
       filterKeyForItem: (item) =>
         return item.fileName
 
-    @topPanel = atom.workspace.addModalPanel
+    @topPanel = atom.workspace.addTopPanel
       item: @selectListView.element
       visible: false
 
