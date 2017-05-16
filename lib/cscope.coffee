@@ -25,17 +25,17 @@ fixCscopeResults = (res) ->
 runCommand = (command, args, options = {}) ->
   process = new Promise (resolve, reject) =>
     output = ''
-    console.log "command: #{command}, args: #{args}, options: #{options}"
+    # console.log "command: #{command}, args: #{args}, options: #{options}"
     child = spawn command, args, options
     if child.stdout != null then child.stdout.on 'data', (data) =>
       output += data.toString()
     if child.stderr != null then child.stderr.on 'data', (data) =>
       reject data.toString()
 
-    child.on 'error', (err) =>
-      console.log "Debug: " + err
+    # child.on 'error', (err) =>
+    #   console.log "Debug: " + err
     child.on 'close', (code) =>
-      console.log "Closed command with " + code
+      # console.log "Closed command with " + code
       if code == -2 then reject "Unable to find cscope"
       if code != 0 then reject code else resolve output
 
@@ -44,6 +44,6 @@ runCommand = (command, args, options = {}) ->
 
 module.exports = (keyword, num) ->
   path = atom.project.getPaths()[0]
-  console.log "path: #{path}"
+  # console.log "path: #{path}"
   cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
   mapPromise (runCommand cscopeBinary, ['-dL' + num, keyword], {cwd: path}), fixCscopeResults
