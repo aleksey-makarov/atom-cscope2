@@ -1,6 +1,6 @@
 # Atom editor cscope package
 
-Navigate through sources with `cscope` database.
+Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) database.
 
 # Todo
 
