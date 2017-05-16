@@ -12,3 +12,4 @@ Navigate through sources with `cscope` database.
 - support `cscope` databases in each directory of the project
 - review/fix call to `cscope`
 - credit original author
+- if there is only one result, don't show the list, just jump to it
