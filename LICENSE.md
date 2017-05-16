@@ -1,5 +1,5 @@
 - Copyright (c) 2015 Amitabh Das
-- Copyright (c) 2017 Aleksey Makarov <aleksey.makarov@gmail.com>
+- Copyright (c) 2017 Aleksey Makarov `<aleksey.makarov@gmail.com>`
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
