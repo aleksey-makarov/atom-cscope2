@@ -8,4 +8,6 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-workspace':
-  'ctrl-shift-1': 'atom-select-list-test:toggle'
+  # 'ctrl-shift-]':  'atom-select-list-test:next'
+  # 'ctrl-shift-[':  'atom-select-list-test:prev'
+  'ctrl-shift-\"': 'atom-select-list-test:toggle'

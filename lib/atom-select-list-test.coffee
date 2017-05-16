@@ -9,6 +9,7 @@ module.exports = AtomSelectListTest =
   selectListView: null
   topPanel: null
   subscriptions: null
+  lastEditor: null
   config: config
 
   activate: (state) ->
@@ -37,9 +38,17 @@ module.exports = AtomSelectListTest =
 
       didConfirmSelection: (item) =>
         console.log 'confirmed', item
+        atom.workspace.open item.fileName,
+            initialLine: item.lineNumber - 1
+            activatePane: false
+            pending: true
+        .then (e) =>
+          @lastEditor = e
 
-      didCancelSelection: () =>
-        console.log 'cancelled'
+      didCancelSelection: =>
+        @topPanel.hide()
+        if @lastEditor?
+          atom.views.getView(@lastEditor)?.focus()
 
       emptyMessage: 'no results'
 
@@ -65,16 +74,25 @@ module.exports = AtomSelectListTest =
 
   toggle: ->
 
-    console.log '-- toggle'
+    @lastEditor = atom.workspace.getActiveTextEditor()
 
-    if @topPanel.isVisible()
-      @topPanel.hide()
-    else
+    word = @lastEditor
+              ?.getWordUnderCursor()
+              ?.trim()
+
+    console.log "toggle: word: <#{word}>"
+
+    if not word? or word == ''
+      atom.notifications.addError "Could not find text under cursor"
+      return
+
+    if not @topPanel.isVisible()
       @topPanel.show()
       @selectListView.focus()
-      cscope '/home/amakarov/work/linux', 'smp_setup_processor_id', 0
-        .then (result) =>
-          result.map (i) =>
-            console.log "#{i.fileName}:#{i.lineNumber} #{i.lineText}"
-          @selectListView.update
-            items: result
+
+    cscope word, 1
+      .then (result) =>
+        result.map (i) =>
+          console.log "#{i.fileName}:#{i.lineNumber} #{i.lineText}"
+        @selectListView.update
+          items: result
