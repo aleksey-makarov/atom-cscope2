@@ -15,20 +15,17 @@ module.exports = AtomSelectListTest =
   config: config
 
   openItem: (item) =>
-    # console.log "opening new item"
     atom.workspace.open item.fileName,
         initialLine: item.lineNumber - 1
         initialColumn: item.column ? 0
         activatePane: false
         pending: true
     .then (e) =>
-      # console.log "set lastEditor from promise"
       @lastEditor = e
 
   activate: (state) ->
 
-    @history = new History 30
-    @history.open = @openItem
+    @history = new History @openItem
 
     @selectListView = new SelectListView
 
@@ -57,9 +54,7 @@ module.exports = AtomSelectListTest =
         @openItem item
 
       didCancelSelection: =>
-        # console.log "didCancelSelection"
         if @topPanel.isVisible()
-          # console.log "it's visible, hide it"
           @topPanel.hide()
           if @lastEditor?
             atom.workspace.paneForItem(@lastEditor)?.activate()
@@ -97,8 +92,6 @@ module.exports = AtomSelectListTest =
               ?.getWordUnderCursor()
               ?.trim()
 
-    # console.log "toggle: word: <#{word}>"
-
     if not word? or word == ''
       atom.notifications.addError "Could not find text under cursor"
       return
@@ -107,9 +100,7 @@ module.exports = AtomSelectListTest =
       @topPanel.show()
       @selectListView.focus()
 
-    cscope word, 1
+    cscope.cscope word, 1
       .then (result) =>
-        # result.map (i) =>
-        #   console.log "#{i.fileName}:#{i.lineNumber} #{i.lineText}"
         @selectListView.update
           items: result

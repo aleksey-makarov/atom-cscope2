@@ -42,8 +42,14 @@ runCommand = (command, args, options = {}) ->
     if args.detached then child.unref()
   return process
 
-module.exports = (keyword, num) ->
-  path = atom.project.getPaths()[0]
-  # console.log "path: #{path}"
-  cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
-  mapPromise (runCommand cscopeBinary, ['-dL' + num, keyword], {cwd: path}), fixCscopeResults
+module.exports = Cscope =
+
+  cscope: (keyword, num) ->
+
+    console.log "* projects:"
+    atom.project.getPaths().forEach (p) -> console.log "* #{p}"
+
+    path = atom.project.getPaths()[0]
+    # console.log "path: #{path}"
+    cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
+    mapPromise (runCommand cscopeBinary, ['-dL' + num, keyword], {cwd: path}), fixCscopeResults

@@ -1,17 +1,13 @@
 module.exports =
 class Navigation
 
-  open: null
-
-  constructor: (size) ->
+  constructor: (open) ->
+    @open = open
     @historyPrev = []
     @historyCurr = null
     @historyNext = []
-    @historyMax = size
 
   save: (item) ->
-
-    console.log "save " + item
 
     if not @historyCurr?
       @pushCurrentToHistoryPrev()
@@ -33,15 +29,10 @@ class Navigation
     @historyNext = []
 
   pushCurrentToHistoryPrev: ->
-    console.log 'pushCurrentToHistoryPrev'
     editor = atom.workspace.getActiveTextEditor()
     pos = editor?.getCursorBufferPosition()
     file = editor?.buffer.file
     fileName = file?.path
-    console.log "editor!!!"   if not editor?
-    console.log "pos!!!"      if not pos?
-    console.log "file!!!"     if not file?
-    console.log "fileName!!!" if not fileName?
     if pos? and fileName?
       @historyPrevPush
         fileName: fileName
@@ -51,13 +42,11 @@ class Navigation
         column: pos.column
 
   historyPrevPush: (item) ->
-    console.log "historyPrevPush: " + item
     @historyPrev.push item
-    if @historyPrev.length > @historyMax
+    if @historyPrev.length > 30
       @historyPrev.shift()
 
   next: =>
-    console.log "next"
     next = @historyNext.pop()
     return if not next?
     @historyPrev.push @historyCurr if @historyCurr?
@@ -66,9 +55,7 @@ class Navigation
 
   prev: =>
     prev = @historyPrev.pop()
-    console.log "prev: " + prev
     return if not prev?
     @historyNext.push @historyCurr if @historyCurr?
     @historyCurr = prev
-    console.log "opening it"
     @open prev
