@@ -16,8 +16,8 @@ fixOneLine = (line) ->
     lineText: data[3]
   return info
 
-  res.split('\n')
 fixCscopeResults = (res) ->
+  res.split('\n')
     .map (e, i, a) -> e.trim()
     .filter (e, i, a) -> e.length > 0
     .map (e, i, a) -> fixOneLine e
