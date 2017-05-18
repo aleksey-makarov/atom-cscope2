@@ -51,7 +51,6 @@ module.exports = Cscope =
 
   # refresh @dbs
   refresh: ->
-    console.log "* in refresh()"
     promises = atom.project.getPaths().map (p) ->
       fullPath = path.join(p, 'cscope.out')
       new Promise (resolve, reject) ->
@@ -70,19 +69,14 @@ module.exports = Cscope =
 
   cscope: (keyword, num) ->
     if @dbs.length == 0
-      console.log "dbs is empty, refreshing..."
       @refresh()
         .then =>
-          console.log "done"
           if @dbs.length == 0
-            console.log "it is still empty, giving up"
             Promise.resolve []
           else
             @dbs.forEach (p) -> console.log "- #{p}"
-            console.log "it's not empty now, searching..."
             @_cscope2 keyword, num
     else
-      console.log "dbs is not empty, searching..."
       @_cscope2 keyword, num
 
   # The argument is an array of promises
