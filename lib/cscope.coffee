@@ -16,19 +16,19 @@ fixOneLine = (line) ->
     lineText: data[3]
   return info
 
-fixCscopeResults = (res) ->
   res.split('\n')
+fixCscopeResults = (res) ->
     .map (e, i, a) -> e.trim()
     .filter (e, i, a) -> e.length > 0
     .map (e, i, a) -> fixOneLine e
 
 # FIXME: rework this function
 # FIXME: keep stream interface for this module
-runCommand = (command, args, options = {}) ->
+runCommand = (wd, command, args) ->
   process = new Promise (resolve, reject) =>
     output = ''
     # console.log "command: #{command}, args: #{args}, options: #{options}"
-    child = spawn command, args, options
+    child = spawn command, args, { cwd: wd }
     if child.stdout != null then child.stdout.on 'data', (data) =>
       output += data.toString()
     if child.stderr != null then child.stderr.on 'data', (data) =>
@@ -66,7 +66,7 @@ module.exports = Cscope =
   _cscope2: (keyword, num) ->
     cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
     path = @dbs[0]
-    mapPromise (runCommand cscopeBinary, ['-dL' + num, keyword], {cwd: path}), fixCscopeResults
+    mapPromise (runCommand path, cscopeBinary, ['-dL' + num, keyword]), fixCscopeResults
 
   cscope: (keyword, num) ->
     if @dbs.length == 0
