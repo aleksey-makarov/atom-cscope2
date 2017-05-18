@@ -1,4 +1,6 @@
 spawn = require('child_process').spawn
+path = require 'path'
+fs = require 'fs'
 
 mapPromise = (p, f) ->
   new Promise (resolve, reject) ->
@@ -44,12 +46,53 @@ runCommand = (command, args, options = {}) ->
 
 module.exports = Cscope =
 
-  cscope: (keyword, num) ->
+  # list of the project directories that have cscope.out files
+  dbs: []
 
-    console.log "* projects:"
-    atom.project.getPaths().forEach (p) -> console.log "* #{p}"
+  # refresh @dbs
+  refresh: ->
+    console.log "* in refresh()"
+    promises = atom.project.getPaths().map (p) ->
+      fullPath = path.join(p, 'cscope.out')
+      new Promise (resolve, reject) ->
+        fs.access fullPath, fs.R_OK | fs.W_OK, (err) ->
+          if err
+            reject err
+          else
+            resolve p
+    @_filterPromises promises
+      .then (ls) => @dbs = ls
 
-    path = atom.project.getPaths()[0]
-    # console.log "path: #{path}"
+  _cscope2: (keyword, num) ->
     cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
+    path = @dbs[0]
     mapPromise (runCommand cscopeBinary, ['-dL' + num, keyword], {cwd: path}), fixCscopeResults
+
+  cscope: (keyword, num) ->
+    if @dbs.length == 0
+      console.log "dbs is empty, refreshing..."
+      @refresh()
+        .then =>
+          console.log "done"
+          if @dbs.length == 0
+            console.log "it is still empty, giving up"
+            Promise.resolve []
+          else
+            @dbs.forEach (p) -> console.log "- #{p}"
+            console.log "it's not empty now, searching..."
+            @_cscope2 keyword, num
+    else
+      console.log "dbs is not empty, searching..."
+      @_cscope2 keyword, num
+
+  # The argument is an array of promises
+  # The function returns an array of results of all resolved promises
+  _filterPromises: (promiseArray) ->
+    ret = []
+    promiseArray.forEach (p) -> p.then (v) ->
+        ret.push(v)
+        Promise.resolve(null)
+      (err) ->
+        Promise.resolve(null)
+    Promise.all(promiseArray).then =>
+      ret
