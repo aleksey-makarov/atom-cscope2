@@ -10,7 +10,7 @@ module.exports = AtomSelectListTest =
   selectListView: null
   topPanel: null
   subscriptions: null
-  lastEditor: null
+  lastPane: null
   history: null
   config: config
 
@@ -21,7 +21,13 @@ module.exports = AtomSelectListTest =
       activatePane: false
       pending: true
     .then (e) =>
-      @lastEditor = e
+      console.log 'set lastPane in openItem'
+      pane = atom.workspace.paneForItem(e)
+      if pane?
+        console.log 'ok'
+        @lastPane = pane
+      else
+        console.log 'bad pane'
 
   activate: (state) ->
 
@@ -56,8 +62,13 @@ module.exports = AtomSelectListTest =
       didCancelSelection: =>
         if @topPanel.isVisible()
           @topPanel.hide()
-          if @lastEditor?
-            atom.workspace.paneForItem(@lastEditor)?.activate()
+          console.log 'activating lastPane...'
+          if @lastPane?
+            @lastPane.activate()
+            console.log 'done'
+          else
+            console.log 'pane is not ok'
+          @lastPane = null
 
       emptyMessage: 'no results'
 
@@ -85,16 +96,21 @@ module.exports = AtomSelectListTest =
 
   toggle: ->
 
-    # console.log "set lastEditor from toggle"
-    @lastEditor = atom.workspace.getActiveTextEditor()
-
-    word = @lastEditor
-              ?.getWordUnderCursor()
-              ?.trim()
+    e = atom.workspace.getActiveTextEditor()
+    word = e?.getWordUnderCursor()
+             ?.trim()
 
     if not word? or word == ''
       atom.notifications.addError "Could not find text under cursor"
       return
+
+    console.log 'setting lastPane in toggle...'
+    pane = atom.workspace.paneForItem(e)
+    if pane?
+      console.log 'pane is ok'
+      @lastPane = pane
+    else
+      console.log 'bad pane'
 
     if not @topPanel.isVisible()
       @topPanel.show()
