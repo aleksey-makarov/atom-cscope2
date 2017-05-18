@@ -16,10 +16,10 @@ module.exports = AtomSelectListTest =
 
   openItem: (item) =>
     atom.workspace.open item.fileName,
-        initialLine: item.lineNumber - 1
-        initialColumn: item.column ? 0
-        activatePane: false
-        pending: true
+      initialLine: item.lineNumber - 1
+      initialColumn: item.column ? 0
+      activatePane: false
+      pending: true
     .then (e) =>
       @lastEditor = e
 
