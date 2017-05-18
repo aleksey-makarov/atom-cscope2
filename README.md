@@ -9,7 +9,11 @@ Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) databas
 - support search for selection
 - support a field to input the search symbol
 - support other `cscope` commands
+  - it will require to implement a popover list
 - support `cscope` databases in each directory of the project
 - review/fix call to `cscope`
 - credit original author
 - if there is only one result, don't show the list, just jump to it
+- PageUp and PageDown do not work
+- use jsx + etch everywhere (?)
+  - one line items with file:line aligned to the right
