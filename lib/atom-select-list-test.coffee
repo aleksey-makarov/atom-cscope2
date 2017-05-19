@@ -87,9 +87,9 @@ module.exports = AtomSelectListTest =
 
     e = atom.workspace.getActiveTextEditor()
     word = e?.getWordUnderCursor()
-             ?.trim()
+            ?.trim()
 
-    if not word? or word == ''
+    if (not word?) or word == ''
       atom.notifications.addError "Could not find text under cursor"
       return
 

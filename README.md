@@ -17,3 +17,5 @@ Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) databas
 - PageUp and PageDown do not work
 - use jsx + etch everywhere (?)
   - one line items with file:line aligned to the right
+- open result list in a new tab (in a new pane right to the current?)
+- cache the last request
