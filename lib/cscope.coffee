@@ -60,8 +60,10 @@ module.exports = Cscope =
 
   _cscope2: (keyword, num) ->
     cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
-    path = @dbs[0]
-    mapPromise (runCommand path, cscopeBinary, ['-dL' + num, keyword]), fixCscopeResults
+    ps = @dbs.map (path) =>
+      mapPromise (runCommand path, cscopeBinary, ['-dL' + num, keyword]), fixCscopeResults
+    mapPromise Promise.all(ps), (aa) =>
+      [].concat.apply([], aa)
 
   cscope: (keyword, num) ->
     if @dbs.length == 0
