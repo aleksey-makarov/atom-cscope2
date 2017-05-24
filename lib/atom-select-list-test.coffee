@@ -1,4 +1,5 @@
 SelectListView = require 'atom-select-list'
+path = require 'path'
 
 cscope = require './cscope'
 config = require './config'
@@ -15,7 +16,11 @@ module.exports = AtomSelectListTest =
   config: config
 
   openItem: (item) =>
-    atom.workspace.open item.fileName,
+    if item.projectPath?
+      p = path.join(item.projectPath, item.fileName)
+    else
+      p = item.fileName
+    atom.workspace.open p,
       initialLine: item.lineNumber - 1
       initialColumn: item.column ? 0
       activatePane: false
@@ -39,7 +44,11 @@ module.exports = AtomSelectListTest =
 
         l2 = document.createElement 'div'
         l2.classList.add 'secondary-line'
-        l2.textContent = "#{item.fileName}:#{item.lineNumber}"
+        if item.projectPath?
+          p = "[#{path.basename item.projectPath}] " # FIXME: add baidge (?)
+        else
+          p = ""
+        l2.textContent = p + "#{item.fileName}:#{item.lineNumber}"
 
         li = document.createElement 'li'
         li.classList.add 'padded'

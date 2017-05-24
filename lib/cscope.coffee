@@ -2,10 +2,6 @@ spawn = require('child_process').spawn
 path = require 'path'
 fs = require 'fs'
 
-mapPromise = (p, f) ->
-  new Promise (resolve, reject) ->
-    p.then (x) -> resolve (f x), (e) -> reject e
-
 fixOneLine = (line) ->
   data = line.split(" ", 3)
   data.push(line.replace(data.join(" ") + " ", ""))
@@ -46,6 +42,7 @@ module.exports = Cscope =
   dbs: []
 
   # refresh @dbs
+  # FIXME: add to Project::onDidChangePaths(callback)
   refresh: ->
     promises = atom.project.getPaths().map (p) ->
       fullPath = path.join(p, 'cscope.out')
@@ -60,10 +57,16 @@ module.exports = Cscope =
 
   _cscope2: (keyword, num) ->
     cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
-    ps = @dbs.map (path) =>
-      mapPromise (runCommand path, cscopeBinary, ['-dL' + num, keyword]), fixCscopeResults
-    mapPromise Promise.all(ps), (aa) =>
-      [].concat.apply([], aa)
+    ret = []
+    ps = @dbs.map (projectPath) =>
+      runCommand projectPath, cscopeBinary, ['-dL' + num, keyword]
+        .then fixCscopeResults
+        .then (results) =>
+          results.forEach (res) => res.projectPath = projectPath
+          results
+    Promise.all(ps)
+      .then (psr) =>
+        [].concat.apply([], psr)
 
   cscope: (keyword, num) ->
     if @dbs.length == 0
