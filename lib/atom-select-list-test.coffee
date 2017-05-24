@@ -102,13 +102,15 @@ module.exports = AtomSelectListTest =
       atom.notifications.addError "Could not find text under cursor"
       return
 
-    @lastPane = atom.workspace.paneForItem(e)
-
-    if not @topPanel.isVisible()
-      @topPanel.show()
-      @selectListView.focus()
-
     cscope.cscope word, 1
       .then (result) =>
-        @selectListView.update
-          items: result
+        if result.length > 1
+          @selectListView.update
+            items: result
+          @lastPane = atom.workspace.paneForItem(e)
+          if not @topPanel.isVisible()
+            @topPanel.show()
+            @selectListView.focus()
+        else if result.length == 1
+          @history.save result[0]
+          @openItem result[0]
