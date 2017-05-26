@@ -4,7 +4,6 @@ Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) databas
 
 # Todo
 
-- support search for selection
 - support a field to input the search symbol
 - support other `cscope` commands
   - it will require to implement a popover list

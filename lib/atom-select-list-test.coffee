@@ -95,8 +95,11 @@ module.exports = AtomSelectListTest =
   toggle: ->
 
     e = atom.workspace.getActiveTextEditor()
-    word = e?.getWordUnderCursor()
-            ?.trim()
+    word = e?.getSelectedText()?.trim()
+    # console.log "selected: \"#{word}\""
+    if (not word?) or word == ''
+      word = e?.getWordUnderCursor()?.trim()
+      # console.log "under cursor: \"#{word}\""
 
     if (not word?) or word == ''
       atom.notifications.addError "Could not find text under cursor"
