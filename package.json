@@ -6,7 +6,10 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "atom-select-list-test:toggle"
+    "atom-workspace": [
+      "atom-select-list-test:toggle",
+      "atom-select-list-test:toggle2"
+    ]
   },
   "repository": "https://github.com/atom/atom-select-list-test",
   "license": "MIT",

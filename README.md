@@ -4,9 +4,9 @@ Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) databas
 
 # Todo
 
-- support a field to input the search symbol
 - support other `cscope` commands
   - it will require to implement a popover list
+- support a field to input the search symbol
 - clear search string each time we perform a new search
 - cache the last request
 - use 'badges' to show project
