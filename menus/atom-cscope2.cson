@@ -16,6 +16,9 @@
           'label': 'Toggle'
           'command': 'atom-cscope2:toggle'
         }, {
+          'label': 'Toggle2'
+          'command': 'atom-cscope2:toggle2'
+        }, {
           'label': 'Next'
           'command': 'atom-cscope2:next'
         }, {

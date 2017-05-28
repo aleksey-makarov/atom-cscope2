@@ -12,4 +12,4 @@
   'ctrl-shift-]':  'atom-cscope2:next'
   'ctrl-shift-[':  'atom-cscope2:prev'
   'ctrl-shift-\"': 'atom-cscope2:toggle'
-  'ctrl-shift-p': 'atom-cscope2:toggle2'
+  "ctrl-shift-p":  'atom-cscope2:toggle2'
