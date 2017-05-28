@@ -81,10 +81,10 @@ module.exports = AtomSelectListTest =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-select-list-test:toggle': => @toggle()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-select-list-test:toggle2': => @toggle2()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-select-list-test:next': => @history.next()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-select-list-test:prev': => @history.prev()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-cscope2:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-cscope2:toggle2': => @toggle2()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-cscope2:next': => @history.next()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-cscope2:prev': => @history.prev()
 
   deactivate: ->
     @topPanel.destroy()
@@ -116,7 +116,7 @@ module.exports = AtomSelectListTest =
         if result.length > 1
           @selectListView.update
             items: result
-          @lastPane = atom.workspace.paneForItem(e)
+          @lastPane = atom.workspace.paneForItem(atom.workspace.getActiveTextEditor())
           if not @topPanel.isVisible()
             @topPanel.show()
             @selectListView.focus()

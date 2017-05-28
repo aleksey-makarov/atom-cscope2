@@ -2,8 +2,8 @@
 # 'context-menu':
 #   'atom-text-editor': [
 #     {
-#       'label': 'Toggle atom-select-list-test'
-#       'command': 'atom-select-list-test:toggle'
+#       'label': 'Toggle atom-cscope2'
+#       'command': 'atom-cscope2:toggle'
 #     }
 #   ]
 'menu': [
@@ -14,13 +14,13 @@
       'submenu': [
         {
           'label': 'Toggle'
-          'command': 'atom-select-list-test:toggle'
+          'command': 'atom-cscope2:toggle'
         }, {
           'label': 'Next'
-          'command': 'atom-select-list-test:next'
+          'command': 'atom-cscope2:next'
         }, {
           'label': 'Prev'
-          'command': 'atom-select-list-test:prev'
+          'command': 'atom-cscope2:prev'
         }
       ]
     ]

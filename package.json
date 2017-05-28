@@ -1,17 +1,17 @@
 {
-  "name": "atom-select-list-test",
-  "main": "./lib/atom-select-list-test",
+  "name": "atom-cscope2",
+  "main": "./lib/atom-cscope2",
   "version": "0.0.0",
   "description": "Test for the atom-select-list package",
   "keywords": [
   ],
   "activationCommands": {
     "atom-workspace": [
-      "atom-select-list-test:toggle",
-      "atom-select-list-test:toggle2"
+      "atom-cscope2:toggle",
+      "atom-cscope2:toggle2"
     ]
   },
-  "repository": "https://github.com/atom/atom-select-list-test",
+  "repository": "https://aleksey.makarov@gitlab.com/aleksey.makarov/atom-cscope2.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

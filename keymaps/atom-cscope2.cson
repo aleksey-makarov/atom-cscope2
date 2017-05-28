@@ -9,7 +9,7 @@
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 
 'atom-workspace':
-  'ctrl-shift-]':  'atom-select-list-test:next'
-  'ctrl-shift-[':  'atom-select-list-test:prev'
-  'ctrl-shift-\"': 'atom-select-list-test:toggle'
-  'ctrl-shift-p': 'atom-select-list-test:toggle2'
+  'ctrl-shift-]':  'atom-cscope2:next'
+  'ctrl-shift-[':  'atom-cscope2:prev'
+  'ctrl-shift-\"': 'atom-cscope2:toggle'
+  'ctrl-shift-p': 'atom-cscope2:toggle2'

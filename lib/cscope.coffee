@@ -21,7 +21,7 @@ fixCscopeResults = (res) ->
 runCommand = (wd, command, args) ->
   new Promise (resolve, reject) =>
     output = ''
-    # console.log "command: #{command}, args: #{args}, options: #{options}"
+    # console.log "command: #{command}, args: #{args}, options: #{wd}"
     child = spawn command, args, { cwd: wd }
     child.stdout.on 'data', (data) =>
       output += data.toString()
@@ -56,7 +56,7 @@ module.exports = Cscope =
       .then (ls) => @dbs = ls
 
   _cscope2: (keyword, num) ->
-    cscopeBinary = atom.config.get('atom-select-list-test.cscopeBinaryLocation')
+    cscopeBinary = atom.config.get('atom-cscope2.cscopeBinaryLocation')
     ret = []
     ps = @dbs.map (projectPath) =>
       runCommand projectPath, cscopeBinary, ['-dL' + num, keyword]
