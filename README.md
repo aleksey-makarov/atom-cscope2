@@ -15,7 +15,6 @@ Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) databas
 - PageUp and PageDown do not work
 - use jsx + etch everywhere (?)
   - one line items with file:line aligned to the right
-- use js everywhere
 - open result list in a new tab (in a new pane right to the current) (?)
 - add project to the string on which the search is performed
 - add callback to watch the list of project's directories
