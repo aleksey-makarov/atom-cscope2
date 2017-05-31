@@ -17,3 +17,4 @@ Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) databas
 - open result list in a new tab (in a new pane right to the current) (?)
 - add callback to watch the list of project's directories
 - add keybindings for the cscope menu
+- why can not I set binding for ctrl-shift-;?
