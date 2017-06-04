@@ -4,7 +4,6 @@ Navigate through sources with [`cscope`](http://cscope.sourceforge.net/) databas
 
 # Todo
 
-- fix history for other cscope commands
 - mouse events on the cscope menu
 - clear search string each time we perform a new search
 - use 'badges' to show project
