@@ -11,7 +11,7 @@
       "atom-cscope2:showMenu"
     ]
   },
-  "repository": "https://github.com/aleksey-makarov/atom-cscope2.git",
+  "repository": "https://github.com/aleksey-makarov/atom-cscope2",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
