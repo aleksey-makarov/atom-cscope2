@@ -1,11 +1,11 @@
 # See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
-# 'context-menu':
-#   'atom-text-editor': [
-#     {
-#       'label': 'Toggle atom-cscope2'
-#       'command': 'atom-cscope2:toggle'
-#     }
-#   ]
+'context-menu':
+ 'atom-text-editor': [
+   {
+     'label': 'Go to Definition'
+     'command': 'atom-cscope2:goToDefinition'
+   }
+ ]
 'menu': [
   {
     'label': 'Packages'
@@ -13,11 +13,11 @@
       'label': 'Cscope'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'atom-cscope2:toggle'
+          'label': 'Go to Definition'
+          'command': 'atom-cscope2:goToDefinition'
         }, {
-          'label': 'Toggle2'
-          'command': 'atom-cscope2:toggle2'
+          'label': 'Show Menu'
+          'command': 'atom-cscope2:showMenu'
         }, {
           'label': 'Next'
           'command': 'atom-cscope2:next'

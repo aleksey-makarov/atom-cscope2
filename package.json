@@ -7,8 +7,8 @@
   ],
   "activationCommands": {
     "atom-workspace": [
-      "atom-cscope2:toggle",
-      "atom-cscope2:toggle2"
+      "atom-cscope2:goToDefinition",
+      "atom-cscope2:showMenu"
     ]
   },
   "repository": "https://aleksey.makarov@gitlab.com/aleksey.makarov/atom-cscope2.git",

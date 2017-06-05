@@ -2,7 +2,7 @@
   "atom-workspace": {
     "ctrl-shift-]":  "atom-cscope2:next",
     "ctrl-shift-[":  "atom-cscope2:prev",
-    "ctrl-shift-\"": "atom-cscope2:toggle",
-    "ctrl-shift-o":  "atom-cscope2:toggle2"
+    "ctrl-shift-\"": "atom-cscope2:goToDefinition",
+    "ctrl-shift-o":  "atom-cscope2:showMenu"
   }
 }
