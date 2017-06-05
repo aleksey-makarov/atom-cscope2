@@ -1,7 +1,7 @@
 {
   "name": "atom-cscope2",
   "main": "./lib/atom-cscope2",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Navigate through sources with cscope database",
   "keywords": [],
   "activationCommands": {
