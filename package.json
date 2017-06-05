@@ -1,7 +1,7 @@
 {
   "name": "atom-cscope2",
   "main": "./lib/atom-cscope2",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Navigate through sources with cscope database",
   "keywords": [
   ],
@@ -11,7 +11,7 @@
       "atom-cscope2:showMenu"
     ]
   },
-  "repository": "https://aleksey.makarov@gitlab.com/aleksey.makarov/atom-cscope2.git",
+  "repository": "https://github.com/aleksey-makarov/atom-cscope2.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
