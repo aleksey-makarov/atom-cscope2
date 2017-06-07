@@ -23,7 +23,6 @@ cscope -q -R -b -i cscope.files
 # Todo
 
 - test cscope menu items hardly
-- clear search string each time we perform a new search
 - close panel on <kbd>escape</kbd> key, not on `didCancelSelection`
   http://stackoverflow.com/questions/36662314/how-to-catch-user-pressing-escape-key-in-atom-package
 - fix <kbd>PageUp</kbd> and <kbd>PageDown</kbd>
