@@ -26,7 +26,6 @@ cscope -q -R -b -i cscope.files
 - close panel on <kbd>escape</kbd> key, not on `didCancelSelection`
   http://stackoverflow.com/questions/36662314/how-to-catch-user-pressing-escape-key-in-atom-package
 - fix <kbd>PageUp</kbd> and <kbd>PageDown</kbd>
-- add callback to watch the list of project's directories and refresh cscope db
 - add keybindings for the cscope menu
 - fix setting the binding for <kbd>ctrl-shift-;</kbd>?
 
