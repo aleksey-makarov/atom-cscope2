@@ -28,6 +28,7 @@ cscope -q -R -b -i cscope.files
 - fix <kbd>PageUp</kbd> and <kbd>PageDown</kbd>
 - add keybindings for the cscope menu
 - fix setting the binding for <kbd>ctrl-shift-;</kbd>?
+- linter-eslint
 
 # Enhancements
 
