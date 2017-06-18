@@ -23,15 +23,9 @@ cscope -q -R -b -i cscope.files
 # Todo
 
 - test cscope menu items hardly
+- set a limit on the count of results
 - close panel on <kbd>escape</kbd> key, not on `didCancelSelection`
   http://stackoverflow.com/questions/36662314/how-to-catch-user-pressing-escape-key-in-atom-package
 - fix <kbd>PageUp</kbd> and <kbd>PageDown</kbd>
 - add keybindings for the cscope menu
-- fix setting the binding for <kbd>ctrl-shift-;</kbd>?
 - linter-eslint
-
-# Enhancements
-
-- align one line items with file:line to the right
-- cache the last request
-- open result list in a new tab (in a new pane right to the current)
