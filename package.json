@@ -1,5 +1,6 @@
 {
   "name": "atom-cscope2",
+  "author": "Aleksey Makarov <aleksey.makarov@gmail.com>",
   "main": "./lib/atom-cscope2",
   "version": "0.3.1",
   "description": "Navigate through sources with cscope database",
@@ -13,10 +14,11 @@
   "repository": "https://github.com/aleksey-makarov/atom-cscope2",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.7.0 <2.0.0"
   },
   "dependencies": {
-    "atom-select-list": "",
-    "doc-jsx": ""
+    "atom-select-list": "^0.7.0",
+    "doc-jsx": "^0.1.0",
+    "etch": "^0.12.7"
   }
 }
