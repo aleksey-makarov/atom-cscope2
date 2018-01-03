@@ -1,4 +1,5 @@
-[![Dependency Status](https://david-dm.org/aleksey-makarov/atom-cscope2.svg)](https://david-dm.org/aleksey-makarov/atom-cscope2)
+[![Dependency status](https://david-dm.org/aleksey-makarov/atom-cscope2.svg)](https://david-dm.org/aleksey-makarov/atom-cscope2)
+[![Build status](https://travis-ci.org/aleksey-makarov/atom-cscope2.svg)](https://travis-ci.org/aleksey-makarov/atom-cscope2)
 
 # Atom editor cscope package
 
