@@ -1,6 +1,6 @@
 [![Dependency status](https://david-dm.org/aleksey-makarov/atom-cscope2.svg)](https://david-dm.org/aleksey-makarov/atom-cscope2)
 [![Build status](https://travis-ci.org/aleksey-makarov/atom-cscope2.svg)](https://travis-ci.org/aleksey-makarov/atom-cscope2)
-<!--- [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) --->
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # Atom editor cscope package
 
