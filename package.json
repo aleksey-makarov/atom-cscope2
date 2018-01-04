@@ -2,7 +2,7 @@
   "name": "atom-cscope2",
   "author": "Aleksey Makarov <aleksey.makarov@gmail.com>",
   "main": "./lib/atom-cscope2",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Navigate through sources with cscope database",
   "keywords": [],
   "activationCommands": {
