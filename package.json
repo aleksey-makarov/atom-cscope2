@@ -20,5 +20,19 @@
     "atom-select-list": "^0.7.0",
     "doc-jsx": "^0.1.0",
     "etch": "^0.12.7"
+  },
+  "devDependencies": {
+    "standard": "*"
+  },
+  "standard": {
+    "env": {
+      "atomtest": true,
+      "browser": true,
+      "jasmine": true,
+      "node": true
+    },
+    "globals": [
+      "atom"
+    ]
   }
 }
