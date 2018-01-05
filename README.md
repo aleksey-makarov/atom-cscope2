@@ -1,16 +1,17 @@
+
+# Atom editor cscope package
+
 [![Dependency status](https://david-dm.org/aleksey-makarov/atom-cscope2.svg)](https://david-dm.org/aleksey-makarov/atom-cscope2)
 [![Build status](https://travis-ci.org/aleksey-makarov/atom-cscope2.svg)](https://travis-ci.org/aleksey-makarov/atom-cscope2)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-# Atom editor cscope package
-
-Navigate through sources with [`cscope`](http://cscope.sourceforge.net/)
-database.
+> Navigate through sources with [`cscope`](http://cscope.sourceforge.net/)
+> database.
 
 Based on [`atom-cscope`](https://github.com/amitab/atom-cscope)
 atom package by Amitabh Das.
 
-### Usage
+## Usage
 
 - Install `cscope`.
 - Generate cscope database in each project directory that should be searched:
