@@ -6,10 +6,12 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > Navigate through sources with [`cscope`](http://cscope.sourceforge.net/)
-> database.
+> database
 
-Based on [`atom-cscope`](https://github.com/amitab/atom-cscope)
+It is based on [`atom-cscope`](https://github.com/amitab/atom-cscope)
 atom package by Amitabh Das.
+It uses [`etch`](https://github.com/atom/etch) to implement user interface,
+it is rewritten in JavaScript and it implements history correctly.
 
 ## Usage
 
